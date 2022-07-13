@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', tableLoad, false);
 
 async function tableLoad(){
-var fetchedData = await fetch('../assets/json/data.json').
+var fetchedData = await fetch('./assets/json/data.json').
                     then(res => res.json());
 var myList =  fetchedData.data; 
 
