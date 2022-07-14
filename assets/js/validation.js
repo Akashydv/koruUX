@@ -6,20 +6,11 @@ function printError(elementId, msg){
 function addDataForm(e){
     e.preventDefault();
 
-    var id = document.getElementById('form_id').value;
     var name = document.getElementById('form_name').value;
     var description = document.getElementById('form_description').value;
     var webReference = document.getElementById('form_web_reference').value;
 
-    var idErr = nameErr = descErr = webErr = true;
-
-    if(id === ""){
-        printError('idError', "*Please fill ID");
-    }else{
-            printError("idError", "");
-            idErr = false;
-        }
-    
+    var nameErr = descErr = webErr = true;
 
     if(name === ""){
         printError('nameError', "*Please fill the name");
@@ -51,7 +42,7 @@ function addDataForm(e){
         }
     }
 
-    if((idErr || nameErr || descErr || webErr) == true){
+    if((nameErr || descErr || webErr) == true){
         return false;
     }
     else{
@@ -59,8 +50,7 @@ function addDataForm(e){
         var table = $('#table-body');
 
         var row = `<tr>
-            <td><input type="checkbox" class="rowCheckbox" id="${id}"></td>
-            <td>${id}</td>
+            <td><input type="checkbox" class="rowCheckbox"></td>
             <td>${name}</td>
             <td>${description}</td>
             <td>${webReference}</td>
@@ -74,7 +64,6 @@ function addDataForm(e){
             msg.innerText = "";
         }, 2000)
 
-        document.getElementById('form_id').value = "";
         document.getElementById('form_name').value = "";        
         document.getElementById('form_description').value = "";
         document.getElementById('form_web_reference').value = "";

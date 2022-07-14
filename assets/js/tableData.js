@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', tableLoad, false);
 
 async function tableLoad(){
-var fetchedData = await fetch('https://github.com/Akashydv/koruUX/blob/gh-pages/assets/json/data.json').
+var fetchedData = await fetch('./assets/json/data.json').
                     then(res => res.json());
 var myList =  fetchedData.data; 
 
@@ -91,7 +91,6 @@ function buildTable() {
         
         var row = `<tr>
                   <td><input type="checkbox" class="rowCheckbox" id="${myList[i].id}"></td>
-                  <td>${myList[i].id}</td>
                   <td>${myList[i].name}</td>
                   <td>${myList[i].description}</td>
                   <td>${myList[i].webReference}</td>
