@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<section class="koru mt-3 text-center">
+<section class="koru mt-3">
     <div class="container">
         <div class="row">
             <div class="col-12 modalSection">
@@ -37,68 +37,107 @@
                   
                   <!-- MODAL -->
                   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                      <div class="modal-content text-center">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="myModalLabel">WELCOME TO MODAL</h5>
+                          <h5 class="modal-title" id="myModalLabel">Alerts</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
-                          <div class="col-12 formSection">
-                            <div class="col-6 mx-auto">
-                                <a class="addBtn" data-toggle="collapse" href="#collapseForm" role="button" aria-expanded="false" aria-controls="collapseForm">
-                                  &#x2b;&nbsp;Add New Data
-                                </a>
-                              <div class="collapse" id="collapseForm">
-                                <form id="addDataForm" onsubmit="addDataForm(event)">
-              
-                                  <input type="number" class="form-control" id="form_id" placeholder="Enter ID">
-                                  <div class="error" id="idError"></div>
-              
-                                  <input type="text" class="form-control" id="form_name" placeholder="Enter Name">
-                                  <div class="error" id="nameError"></div>
-              
-                                  <input type="text" class="form-control" id="form_description" placeholder="Enter Description">
-                                  <div class="error" id="descError"></div>
-              
-                                  <input type="text" class="form-control" id="form_web_reference" placeholder="Enter Web Reference">
-                                  <div class="error" id="webError"></div>
-                                  
-                                  <input type="submit" class="btn btn-primary">
-                                  <p id="msg"></p>
-                                </form>   
-                              </div> 
+                          <nav class="navbar navbar-expand-lg">
+                            <div class="navbar-div">
+                              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                                <li class="nav-item active">
+                                  <a class="nav-link" href="#">Immunisation Alerts</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">Lab Alerts</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">DI Alerts</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">Procedure Alerts</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">RX Specific Alerts</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">DX Specific Alerts</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">Patient Specific Alerts</a>
+                                </li>
+                              </ul>
                             </div>
-                          </div>
-                          <div class="col-12 tableSection">              
-                              <h4>All JSON Data</h4>
-                              <div class="col-6">
-                                <span>
-                                  <label for="searchInput">Find</label>
-                                  <input type="text" id="searchInput" class="mb-2 form-control" onkeyup="filterTable()">
-                                  <button onclick="deleteRows()" class="btn btn-danger">Delete Selected Rows</button>
-                                </span>
+                          </nav>
+                          <div class="container-fluid">
+                            <div class="row">
+                              <div class="col-7 py-4 border-right tableSection">              
+                                <h6>Immunisation Alerts</h6>
                                 
-                              </div>
-                              <table class="table table-striped" id="tableId">
-                                <thead>
-                                  <tr class="table-row">
-                                    <th>SELECT</th>  
-                                    <th>ID</th>
-                                    <th>NAME</th>
-                                    <th>DESCRIPTION</th>
-                                    <th>WEB REFERENCE</th>
-                                  </tr>
-                                </thead>
-                                <tbody id="table-body">
+                                  <span>
+                                    <label for="searchInput">Find</label>
+                                    <input type="text" id="searchInput" class="mb-2 form-control w-50 p-0" onkeyup="filterTable()">
+                                    <button onclick="deleteRows()" class="deleteBtn">Delete</button>
+                                  </span>
+                                  
+                                <table class="table table-striped" id="tableId">
+                                  <thead>
+                                    <tr class="table-row">
+                                      <th><input type="checkbox" id="selectAllRows"></th>  
+                                      <th>NAME</th>
+                                      <th>DESCRIPTION</th>
+                                      <th>WEB REFERENCE</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody id="table-body">
+  
+                                  </tbody>
+                                </table>   
+                                <div class="container ">
+                                  <div id="pagination-wrapper"></div>
+                              </div>  
+                            </div>
 
-                                </tbody>
-                              </table>   
-                              <div class="container ">
-                                <div id="pagination-wrapper"></div>
-                            </div>  
+                            <div class="col-5 py-4 mx-auto formSection">
+                                  
+                                <div class="col-12 mx-auto">
+                                  <form id="addDataForm" onsubmit="addDataForm(event)">
+                                    
+                                    <div class="form-group row">
+                                      <label class="col-3 col-form-label" for="form_name">Name</label>
+                                      <div class="col-9">
+                                        <input type="text" class="form-control" id="form_name">
+                                        <div class="error" id="nameError"></div>
+                                      </div>
+                                    </div>  
+
+                                    <div class="form-group row">
+                                      <label class="col-3 col-form-label" for="form_description">Description</label>
+                                      <div class="col-9">
+                                        <input type="text" class="form-control" id="form_description">
+                                        <div class="error" id="descError"></div>
+                                      </div> 
+                                      </div>
+                                    <div class="form-group row">
+                                      <label class="col-3 col-form-label" for="form_web_reference">Web Ref.</label>
+                                      <div class="col-9">
+                                        <input type="text" class="form-control" id="form_web_reference">
+                                        <div class="error" id="webError"></div>
+                                      </div>
+                                    </div>
+
+                                    <div class="btnDiv">
+                                      <input type="submit" value="Add" class="btn btn-secondary p-0 py-1 px-3">
+                                    </div> 
+                                    <p id="msg"></p>
+                                  </form>   
+                                </div> 
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="modal-footer">
@@ -107,6 +146,7 @@
                       </div>
                     </div>
                   </div>
+                </div>
             </div>
         </div>
     </div>
